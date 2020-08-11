@@ -48,6 +48,5 @@ namespace LiveClinic.SharedKernel.Infrastructure.Persistence
         {
             await DbCollections.DeleteOneAsync(x => x.Id == entity.Id);
         }
-
     }
 }

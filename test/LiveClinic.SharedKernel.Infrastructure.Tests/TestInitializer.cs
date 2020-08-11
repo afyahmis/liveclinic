@@ -4,6 +4,7 @@ using LiveClinic.SharedKernel.Infrastructure.Persistence;
 using LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts;
 using LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts.Domain;
 using LiveClinic.SharedKernel.Interfaces.Persistence;
+using LiveClinic.SharedKernel.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
@@ -41,19 +42,17 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests
         {
             var repository = ServiceProvider.GetService<ITestCarDocumentRepository>();
             var context = repository.DatabaseContext as IMongoDatabase;
-            context.DropCollection("");
-            context.CreateCollection("");
+            context.DropCollection(repository.CollectionName);
         }
-        public static void SeedData(params IEnumerable<object>[] entities)
+        public static void SeedData(params IEnumerable<AggregateRoot>[] entities)
         {
-            // var context = ServiceProvider.GetService<TestDbContext>();
-            //
-            // foreach (IEnumerable<object> t in entities)
-            // {
-            //     context.AddRange(t);
-            // }
-            //
-            // context.SaveChanges();
+            var repository = ServiceProvider.GetService<ITestCarDocumentRepository>();
+            var context = repository.DatabaseContext as IMongoDatabase;
+
+            foreach (IEnumerable<AggregateRoot> t in entities)
+            {
+               context.GetCollection<t>().InsertMany(t);
+            }
         }
 
         private static DatabaseSettings GetDatabaseSettings(IConfiguration config)
