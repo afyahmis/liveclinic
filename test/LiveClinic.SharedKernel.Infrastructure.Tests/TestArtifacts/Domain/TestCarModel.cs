@@ -5,7 +5,7 @@ using LiveClinic.SharedKernel.Model;
 namespace LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts.Domain
 {
     [Table(nameof(TestCarModel))]
-    public class TestCarModel : Entity<Guid>
+    public class TestCarModel : Entity<int>
     {
         public string Name { get; set; }
         public int Year { get; set; }
@@ -14,7 +14,6 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts.Domain
 
         public TestCarModel()
         {
-            Id=Guid.NewGuid();
         }
 
         public TestCarModel(string name, int year, TestTrim trim, string testCarId)

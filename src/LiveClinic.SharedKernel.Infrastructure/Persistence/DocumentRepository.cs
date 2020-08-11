@@ -11,15 +11,15 @@ namespace LiveClinic.SharedKernel.Infrastructure.Persistence
         protected internal readonly IMongoDatabase Database;
         protected internal readonly IMongoCollection<T> DbCollections;
 
-        public object DatabaseContext { get; }
-        public string CollectionName { get; }
+        public IDatabaseSettings DatabaseSettings { get; }
 
         protected DocumentRepository(IDatabaseSettings settings)
         {
-            CollectionName = new T().PreferredDocName;
+            DatabaseSettings = settings;
+            var collectionName = new T().PreferredDocName;
             var client = new MongoClient(settings.ConnectionString);
-            DatabaseContext = Database = client.GetDatabase(settings.DatabaseName);
-            DbCollections = Database.GetCollection<T>(CollectionName);
+            Database = client.GetDatabase(settings.DatabaseName);
+            DbCollections = Database.GetCollection<T>(collectionName);
         }
 
         public async Task Create(T entity)

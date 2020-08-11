@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LiveClinic.SharedKernel.Infrastructure.Persistence;
 using LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts;
 using LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts.Domain;
@@ -17,6 +18,8 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests
     public class TestInitializer
     {
         public static IServiceProvider ServiceProvider;
+        private static IDatabaseSettings _databaseSettings;
+        public static IMongoDatabase MongoDatabase;
 
         [OneTimeSetUp]
         public void Init()
@@ -29,29 +32,38 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
+            _databaseSettings = GetDatabaseSettings(config);
+
 
             var services = new ServiceCollection();
-
-            services.AddSingleton<IDatabaseSettings>(GetDatabaseSettings(config));
+            services.AddSingleton<IDatabaseSettings>(_databaseSettings);
             services.AddTransient<ITestCarDocumentRepository, TestCarDocumentRepository>();
+            services.AddSingleton<IMongoClient>(new MongoClient(_databaseSettings.ConnectionString));
 
             ServiceProvider = services.BuildServiceProvider();
+            var client = ServiceProvider.GetService<IMongoClient>();
+            MongoDatabase = client.GetDatabase(_databaseSettings.DatabaseName);
         }
 
         public static void ClearDb()
         {
-            var repository = ServiceProvider.GetService<ITestCarDocumentRepository>();
-            var context = repository.DatabaseContext as IMongoDatabase;
-            context.DropCollection(repository.CollectionName);
+            var client = ServiceProvider.GetService<IMongoClient>();
+            var context = client.GetDatabase(_databaseSettings.DatabaseName);
+            var collections = context.ListCollectionNames().ToList();
+            foreach (var collection in collections)
+                context.DropCollection(collection);
         }
+
         public static void SeedData(params IEnumerable<AggregateRoot>[] entities)
         {
-            var repository = ServiceProvider.GetService<ITestCarDocumentRepository>();
-            var context = repository.DatabaseContext as IMongoDatabase;
+            var client = ServiceProvider.GetService<IMongoClient>();
 
-            foreach (IEnumerable<AggregateRoot> t in entities)
+            foreach (var e in entities)
             {
-               context.GetCollection<t>().InsertMany(t);
+                var entity= e.First();
+                var collection = client.GetDatabase(_databaseSettings.DatabaseName)
+                    .GetCollection<AggregateRoot>(entity.PreferredDocName);
+                collection.InsertMany(e);
             }
         }
 

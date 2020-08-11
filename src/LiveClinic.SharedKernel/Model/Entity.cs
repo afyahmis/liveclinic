@@ -3,7 +3,11 @@ namespace LiveClinic.SharedKernel.Model
     public abstract class Entity<TId>
     {
         public virtual TId Id { get; set; }
-        public string PreferredDocName => GenerateDocName();
+        public string PreferredDocName => GenerateDocName().ToLower();
+
+        protected Entity()
+        {
+        }
 
         public override bool Equals(object obj)
         {

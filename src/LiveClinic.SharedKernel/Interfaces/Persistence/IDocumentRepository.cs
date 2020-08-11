@@ -6,8 +6,7 @@ namespace LiveClinic.SharedKernel.Interfaces.Persistence
 {
     public interface IDocumentRepository<T> where T : AggregateRoot
     {
-        object DatabaseContext { get; }
-        string CollectionName { get; }
+        IDatabaseSettings DatabaseSettings { get; }
         Task Create(T entity);
         Task<T> Read(string id);
         Task<IEnumerable<T>> Read();

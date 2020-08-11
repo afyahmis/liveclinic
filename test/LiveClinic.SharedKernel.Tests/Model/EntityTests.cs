@@ -14,8 +14,8 @@ namespace LiveClinic.SharedKernel.Tests.Model
         {
             var demo=new Demo();
             var otherDemo=new OtherDemo();
-            Assert.AreEqual("Demos",demo.PreferredDocName);
-            Assert.AreEqual("Others",otherDemo.PreferredDocName);
+            Assert.AreEqual("demos",demo.PreferredDocName);
+            Assert.AreEqual("others",otherDemo.PreferredDocName);
             Log.Information(demo.PreferredDocName);
             Log.Information(otherDemo.PreferredDocName);
         }
