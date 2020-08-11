@@ -6,15 +6,20 @@ using MongoDB.Driver;
 
 namespace LiveClinic.SharedKernel.Infrastructure.Persistence
 {
-    public abstract class BaseRepository<T> :IRepository<T>  where T : AggregateRoot
+    public abstract class DocumentRepository<T> :IDocumentRepository<T>  where T : AggregateRoot, new()
     {
+        protected internal readonly IMongoDatabase Database;
         protected internal readonly IMongoCollection<T> DbCollections;
 
-        protected BaseRepository(IDatabaseSettings settings)
+        public object DatabaseContext { get; }
+        public string CollectionName { get; }
+
+        protected DocumentRepository(IDatabaseSettings settings)
         {
+            CollectionName = new T().PreferredDocName;
             var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.DatabaseName);
-            DbCollections = database.GetCollection<T>(nameof(T));
+            DatabaseContext = Database = client.GetDatabase(settings.DatabaseName);
+            DbCollections = Database.GetCollection<T>(CollectionName);
         }
 
         public async Task Create(T entity)

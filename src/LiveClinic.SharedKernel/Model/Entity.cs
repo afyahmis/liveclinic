@@ -3,6 +3,7 @@ namespace LiveClinic.SharedKernel.Model
     public abstract class Entity<TId>
     {
         public virtual TId Id { get; set; }
+        public string PreferredDocName => GenerateDocName();
 
         public override bool Equals(object obj)
         {
@@ -37,6 +38,11 @@ namespace LiveClinic.SharedKernel.Model
         public static bool operator !=(Entity<TId> a, Entity<TId> b)
         {
             return !(a == b);
+        }
+
+        public virtual string GenerateDocName()
+        {
+            return $"{GetType().Name}s";
         }
 
         public override int GetHashCode()

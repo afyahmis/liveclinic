@@ -4,8 +4,10 @@ using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.SharedKernel.Interfaces.Persistence
 {
-    public interface IRepository<T>  where T : AggregateRoot
+    public interface IDocumentRepository<T> where T : AggregateRoot
     {
+        object DatabaseContext { get; }
+        string CollectionName { get; }
         Task Create(T entity);
         Task<T> Read(string id);
         Task<IEnumerable<T>> Read();
