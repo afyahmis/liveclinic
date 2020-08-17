@@ -1,4 +1,5 @@
-﻿using LiveClinic.SharedKernel.Common;
+﻿using System;
+using LiveClinic.SharedKernel.Common;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.ClientManager.Core.Domain
@@ -6,6 +7,7 @@ namespace LiveClinic.ClientManager.Core.Domain
     public class Client : AggregateRoot
     {
         public PersonName Name { get; set; }
-
+        public DateTime BirthDate { get; set; }
+        public string Gender { get; set; }
     }
 }
