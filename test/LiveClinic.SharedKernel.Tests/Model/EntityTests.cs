@@ -1,7 +1,6 @@
 using System;
 using LiveClinic.SharedKernel.Model;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Serilog;
 
 namespace LiveClinic.SharedKernel.Tests.Model

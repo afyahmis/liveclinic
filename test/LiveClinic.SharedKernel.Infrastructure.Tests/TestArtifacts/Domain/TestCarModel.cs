@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts.Domain
