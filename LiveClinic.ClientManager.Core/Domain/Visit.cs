@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.ClientManager.Core.Domain
 {
-    public class Encounter : AggregateRoot
+    public class Visit : AggregateRoot
     {
         public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public string ClientId { get; set; }
         public string ClinicId { get; set; }
-        public List<Observation> Observations { get; set; }
+        public List<Consultation> Consultations { get; set; }=new List<Consultation>();
+
     }
 }

@@ -5,8 +5,8 @@ namespace LiveClinic.SharedKernel.Common
 {
     public class Address : ValueObject<Address>
     {
-        public string Street { get; set; }
-        public string City { get; set; }
+        public string Street { get;  }
+        public string City { get;  }
 
         public Address(string street, string city)
         {

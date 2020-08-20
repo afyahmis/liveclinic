@@ -5,9 +5,9 @@ namespace LiveClinic.SharedKernel.Common
 {
     public class PersonName : ValueObject<PersonName>
     {
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName { get;  }
+        public string MiddleName { get;  }
+        public string LastName { get;  }
 
         public PersonName(string firstName, string lastName)
         {

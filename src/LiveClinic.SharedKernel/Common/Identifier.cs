@@ -5,8 +5,8 @@ namespace LiveClinic.SharedKernel.Common
 {
     public class Identifier:ValueObject<Identifier>
     {
-        public string Type { get; set; }
-        public string Value { get; set; }
+        public string Type { get;  }
+        public string Value { get;  }
 
         public Identifier(string type, string value)
         {

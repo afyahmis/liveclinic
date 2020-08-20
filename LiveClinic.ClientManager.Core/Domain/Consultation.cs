@@ -1,11 +1,14 @@
+﻿using System;
+using System.Text;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.ClientManager.Core.Domain
 {
-    public class Observation:Entity<long>
+    public class Consultation : Entity<int>
     {
+        public DateTime Date { get; set; } = DateTime.Now;
         public string Notes { get; set; }
+        public string VisitId { get; set; }
         public string DoctorId { get; set; }
-        public string EncounterId { get; set; }
     }
 }
