@@ -34,6 +34,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{6B7BCE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.ClientManager.Core", "LiveClinic.ClientManager.Core\LiveClinic.ClientManager.Core.csproj", "{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Billing", "Billing", "{002A649C-AB1D-4369-A517-55218DFFFEAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.Billing.Core", "src\LiveClinic.Billing.Core\LiveClinic.Billing.Core.csproj", "{C988EB82-40AA-4A9B-8DBE-5ABFA16B8DCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +80,10 @@ Global
 		{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C988EB82-40AA-4A9B-8DBE-5ABFA16B8DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C988EB82-40AA-4A9B-8DBE-5ABFA16B8DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C988EB82-40AA-4A9B-8DBE-5ABFA16B8DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C988EB82-40AA-4A9B-8DBE-5ABFA16B8DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +103,8 @@ Global
 		{EC73F907-37B8-4929-97ED-A3660603EB59} = {B5EB9154-6B11-4010-A179-7A90DA78AFE3}
 		{6B7BCEA8-01DA-4625-AEF4-4B34A82FEE45} = {EBFFA621-5312-494E-A4DE-88E98A8BC1EA}
 		{AE06DDC5-C79A-4EAA-A720-808590EEC4AF} = {6B7BCEA8-01DA-4625-AEF4-4B34A82FEE45}
+		{002A649C-AB1D-4369-A517-55218DFFFEAB} = {EBFFA621-5312-494E-A4DE-88E98A8BC1EA}
+		{C988EB82-40AA-4A9B-8DBE-5ABFA16B8DCC} = {002A649C-AB1D-4369-A517-55218DFFFEAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {238261D7-86B7-4BF8-94BB-F3024DA54982}
