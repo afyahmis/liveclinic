@@ -14,12 +14,12 @@ namespace LiveClinic.SharedKernel.Common
             FirstName = firstName;
             LastName = lastName;
         }
-
+        
         public PersonName(string firstName, string middleName, string lastName) : this(firstName, lastName)
         {
             MiddleName = middleName;
         }
-
+        
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return FirstName;

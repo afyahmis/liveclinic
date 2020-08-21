@@ -32,7 +32,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClinicManager.In
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientService", "ClientService", "{6B7BCEA8-01DA-4625-AEF4-4B34A82FEE45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Core", "LiveClinic.ClientManager.Core\LiveClinic.ClientManager.Core.csproj", "{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Core", "src\LiveClinic.ClientManager.Core\LiveClinic.ClientManager.Core.csproj", "{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillingService", "BillingService", "{002A649C-AB1D-4369-A517-55218DFFFEAB}"
 EndProject
@@ -40,19 +40,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Core", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillingService", "BillingService", "{0DA34F29-7D7F-4981-B861-1A604203823E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.Billing.Core.Tests", "LiveClinic.Billing.Core.Tests\LiveClinic.Billing.Core.Tests.csproj", "{F08CFED0-13F0-4292-A0A3-6683AD678A7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Core.Tests", "test\LiveClinic.Billing.Core.Tests\LiveClinic.Billing.Core.Tests.csproj", "{F08CFED0-13F0-4292-A0A3-6683AD678A7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.Billing.Infrastructure", "LiveClinic.Billing.Infrastructure\LiveClinic.Billing.Infrastructure.csproj", "{E4DF6EBD-B47A-4615-B1AB-441FB9DE0CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Infrastructure", "src\LiveClinic.Billing.Infrastructure\LiveClinic.Billing.Infrastructure.csproj", "{E4DF6EBD-B47A-4615-B1AB-441FB9DE0CF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.Billing.Infrastructure.Tests", "LiveClinic.Billing.Infrastructure.Tests\LiveClinic.Billing.Infrastructure.Tests.csproj", "{F0E81BFA-FCAE-4D0B-B2D6-6834337CBC21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Infrastructure.Tests", "test\LiveClinic.Billing.Infrastructure.Tests\LiveClinic.Billing.Infrastructure.Tests.csproj", "{F0E81BFA-FCAE-4D0B-B2D6-6834337CBC21}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientService", "ClientService", "{B0AC6E7D-27C7-4B6E-8F8B-909EFCD315D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.ClientManager.Infrastructure", "LiveClinic.ClientManager.Infrastructure\LiveClinic.ClientManager.Infrastructure.csproj", "{29B4C570-D953-4D12-AE2B-5EBBEB6CC5CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Infrastructure", "src\LiveClinic.ClientManager.Infrastructure\LiveClinic.ClientManager.Infrastructure.csproj", "{29B4C570-D953-4D12-AE2B-5EBBEB6CC5CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.ClientManager.Core.Tests", "LiveClinic.ClientManager.Core.Tests\LiveClinic.ClientManager.Core.Tests.csproj", "{96E8C6E1-4865-4D0A-A14C-A3D5780C5B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Core.Tests", "test\LiveClinic.ClientManager.Core.Tests\LiveClinic.ClientManager.Core.Tests.csproj", "{96E8C6E1-4865-4D0A-A14C-A3D5780C5B06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.ClientManager.Infrastructure.Tests", "LiveClinic.ClientManager.Infrastructure.Tests\LiveClinic.ClientManager.Infrastructure.Tests.csproj", "{E3BE8CCA-9E40-45B6-87A0-5088C26175C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Infrastructure.Tests", "test\LiveClinic.ClientManager.Infrastructure.Tests\LiveClinic.ClientManager.Infrastructure.Tests.csproj", "{E3BE8CCA-9E40-45B6-87A0-5088C26175C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

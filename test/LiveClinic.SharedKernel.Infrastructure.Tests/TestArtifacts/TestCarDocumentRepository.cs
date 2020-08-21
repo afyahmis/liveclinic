@@ -9,5 +9,10 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts
         public TestCarDocumentRepository(IDatabaseSettings settings) : base(settings)
         {
         }
+
+        public string DocName()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

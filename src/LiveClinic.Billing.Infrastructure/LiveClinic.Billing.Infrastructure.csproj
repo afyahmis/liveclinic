@@ -10,9 +10,4 @@
     <PackageReference Include="Serilog" Version="2.9.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\LiveClinic.Facility.Core\LiveClinic.ClinicManager.Core.csproj" />
-    <ProjectReference Include="..\LiveClinic.SharedKernel.Infrastructure\LiveClinic.SharedKernel.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>

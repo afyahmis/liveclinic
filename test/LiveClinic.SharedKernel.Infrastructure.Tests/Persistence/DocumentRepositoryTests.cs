@@ -48,13 +48,25 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests.Persistence
             Assert.NotNull(testEntity);
             Log.Debug(testEntity.ToString());
         }
-
+        
         [Test]
         public void should_Read()
         {
             var testEntities = _testEntityRepository.Read().Result.ToList();
             Assert.True(testEntities.Count > 0);
         }
+
+        [Test]
+        public void should_Read_By_Predicate()
+        {
+            var name = _testEntities.Last().Name;
+            var testEntity = _testEntityRepository
+                .Read(x => x.Name == name)
+                .Result.First();
+            Assert.NotNull(testEntity);
+            Log.Debug(testEntity.ToString());
+        }
+
 
         [Test]
         public void should_Update()

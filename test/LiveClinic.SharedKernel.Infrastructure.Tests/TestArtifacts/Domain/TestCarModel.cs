@@ -23,16 +23,16 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests.TestArtifacts.Domain
             TestCarId = testCarId;
         }
 
-
-        public override string ToString()
-        {
-            return $"{Name} {Year} ({Trim})";
-        }
-
         public void ChangeTrim(string transmission, string fuelType)
         {
             Trim.Transmission = transmission;
             Trim.FuelType = fuelType;
         }
+
+        public override string ToString()
+        {
+            return $"{Name} {Year} ({Trim})";
+        }
+        
     }
 }

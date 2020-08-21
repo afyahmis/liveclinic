@@ -8,7 +8,7 @@ namespace LiveClinic.SharedKernel.Common
         public decimal Value { get;  }
         public string Currency { get;  }
 
-        public Money(decimal value, string currency="USD")
+        public Money(decimal value, string currency)
         {
             Value = value;
             Currency = currency;
