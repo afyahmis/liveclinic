@@ -1,7 +1,7 @@
 using LiveClinic.ClinicManager.Core.Application.Services;
 using NUnit.Framework;
 
-namespace LiveClinic.ClientManager.Core.Tests.Application.Services
+namespace LiveClinic.ClinicManager.Core.Tests.Application.Services
 {
     [TestFixture]
     public class ClinicServiceTests

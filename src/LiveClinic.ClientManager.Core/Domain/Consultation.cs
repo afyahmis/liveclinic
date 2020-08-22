@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.ClientManager.Core.Domain

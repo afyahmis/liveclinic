@@ -1,9 +1,7 @@
-using System;
 using System.Linq;
 using FluentValidation;
 using LiveClinic.ClinicManager.Core.Domain.Facility;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Serilog;
 
 namespace LiveClinic.ClinicManager.Core.Tests.Domain.Facility

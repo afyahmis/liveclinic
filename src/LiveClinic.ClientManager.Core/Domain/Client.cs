@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using LiveClinic.SharedKernel.Common;
 using LiveClinic.SharedKernel.Model;
 

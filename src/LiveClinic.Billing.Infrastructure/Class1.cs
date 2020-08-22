@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LiveClinic.Billing.Infrastructure
+﻿namespace LiveClinic.Billing.Infrastructure
 {
     public class Class1
     {

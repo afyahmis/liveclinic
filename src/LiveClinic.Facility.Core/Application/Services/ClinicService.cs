@@ -3,16 +3,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using LiveClinic.ClinicManager.Core.Domain.Facility;
+using LiveClinic.SharedKernel.Interfaces.Messaging;
 using Serilog;
 
 namespace LiveClinic.ClinicManager.Core.Application.Services
 {
     public class ClinicService:IClinicService
     {
+        private readonly IEventPublisher _eventPublisher;
         private readonly IClinicRepository _clinicRepository;
 
-        public ClinicService(IClinicRepository clinicRepository)
+        public ClinicService(IEventPublisher eventPublisher,IClinicRepository clinicRepository)
         {
+            _eventPublisher = eventPublisher;
             _clinicRepository = clinicRepository;
         }
 
@@ -21,6 +24,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             try
             {
                 var clinics =await _clinicRepository.Read();
+
                 return Result.Success(clinics.FirstOrDefault());
             }
             catch (Exception e)
@@ -41,6 +45,8 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                     throw new Exception($"Clinic is already setup !");
                 
                 await _clinicRepository.Create(clinic);
+
+                await _eventPublisher.Publish(clinic);
 
                 return Result.Success();
             }
@@ -64,7 +70,9 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 existingClinic.ChangeDetails(name, street, city);
 
                 await _clinicRepository.Update(existingClinic);
-                
+
+                await _eventPublisher.Publish(existingClinic);
+
                 return Result.Success();
             }
             catch (Exception e)
@@ -86,7 +94,9 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 existingClinic.ChangeFee(value, currency);
 
                 await _clinicRepository.Update(existingClinic);
-                
+
+                await _eventPublisher.Publish(existingClinic);
+
                 return Result.Success();
             }
             catch (Exception e)
