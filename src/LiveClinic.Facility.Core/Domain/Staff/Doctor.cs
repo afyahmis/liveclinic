@@ -1,4 +1,7 @@
-﻿using LiveClinic.SharedKernel.Common;
+﻿using FluentValidation;
+using LiveClinic.ClinicManager.Core.Application.Events;
+using LiveClinic.ClinicManager.Core.Domain.Common;
+using LiveClinic.SharedKernel.Common;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.ClinicManager.Core.Domain.Staff
@@ -7,25 +10,43 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
     {
         public PersonName Name { get; private set; }
         public Address Address { get; private set; }
-        public Money ServiceFee { get; private set; }
+        public Fee ConsultationFee { get; private set; }
+        private readonly DoctorValidator _validator=new DoctorValidator();
 
         public Doctor(string firstName, string middleName, string lastName, string street, string city, decimal value,
             string currency)
         {
             Name = new PersonName(firstName, middleName, lastName);
             Address = new Address(street, city);
-            ServiceFee = new Money(value, currency);
+            ConsultationFee = new Fee(FeeType.Consultation, value, currency);
+
+            _validator.ValidateAndThrow(this);
+
+            AddDomainEvent(new DoctorCreated(Id));
         }
 
         public void ChangeDetails(string firstName, string middleName, string lastName, string street, string city)
         {
             Name = new PersonName(firstName, middleName, lastName);
             Address = new Address(street, city);
+
+            _validator.ValidateAndThrow(this);
+
+            AddDomainEvent(new DoctorDetailsUpdated(Id));
         }
 
-        public void ChangeServiceFee(decimal value, string currency)
+        public void ChangeConsultationFee(decimal value, string currency)
         {
-            ServiceFee = new Money(value, currency);
+            ConsultationFee = new Fee(FeeType.Consultation, value, currency);
+
+            _validator.ValidateAndThrow(this);
+
+            AddDomainEvent(new FeeChanged(FeeType.Service, Id));
+        }
+
+        public override string ToString()
+        {
+            return $"Dr. {Name}";
         }
     }
 }

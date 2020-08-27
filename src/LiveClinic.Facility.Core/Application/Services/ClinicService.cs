@@ -13,7 +13,8 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         private readonly IEventPublisher _eventPublisher;
         private readonly IClinicRepository _clinicRepository;
 
-        public ClinicService(IEventPublisher eventPublisher,IClinicRepository clinicRepository)
+        public ClinicService(IEventPublisher eventPublisher,IClinicRepository clinicRepository
+        )
         {
             _eventPublisher = eventPublisher;
             _clinicRepository = clinicRepository;
@@ -21,6 +22,8 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
 
         public async Task<Result<Clinic>> Load()
         {
+            Log.Debug("Loading...");
+
             try
             {
                 var clinics =await _clinicRepository.Read();
@@ -32,11 +35,12 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 Log.Error("Load error", e);
                 return Result.Failure<Clinic>(e.Message);
             }
-            
         }
 
-        public async Task<Result> Setup(Clinic clinic)
+        public async Task<Result> SetupClinic(Clinic clinic)
         {
+            Log.Debug($"Setting up [{clinic}] ...");
+
             try
             {
                 var clinics =  await _clinicRepository.Read();
@@ -52,14 +56,16 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
             catch (Exception e)
             {
-                Log.Error("Setup error", e);
+                Log.Error("SetupClinic error", e);
                 return Result.Failure(e.Message);
             }
             
         }
 
-        public async Task<Result> UpdateDetails(string clinicId, string name, string street, string city)
+        public async Task<Result> ChangeClinicDetails(string clinicId, string name, string street, string city)
         {
+            Log.Debug($"updating clinic [{clinicId}] ...");
+            
             try
             {
                 var existingClinic = await _clinicRepository.Read(clinicId);
@@ -82,8 +88,9 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result> UpdateFee(string clinicId, decimal value, string currency)
+        public async Task<Result> AdjustServiceFee(string clinicId, decimal value, string currency)
         {
+            Log.Debug($"updating clinic [{clinicId}] Fee ...");
             try
             {
                 var existingClinic = await _clinicRepository.Read(clinicId);
@@ -105,5 +112,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 return Result.Failure(e.Message);
             }
         }
+
     }
 }

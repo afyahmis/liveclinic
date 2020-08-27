@@ -9,8 +9,8 @@ namespace LiveClinic.ClinicManager.Core.Domain.Facility
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.Address.Street).NotEmpty();
             RuleFor(x => x.Address.City).NotEmpty();
-            RuleFor(x => x.ClinicFee.Value).GreaterThan(0);
-            RuleFor(x => x.ClinicFee.Currency).NotEmpty();
+            RuleFor(x => x.ServiceFee.Amount.Value).GreaterThan(0);
+            RuleFor(x => x.ServiceFee.Amount.Currency).NotEmpty();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using LiveClinic.ClinicManager.Core.Application.Events;
+using LiveClinic.ClinicManager.Core.Domain.Common;
 using LiveClinic.SharedKernel.Common;
 using LiveClinic.SharedKernel.Model;
 
@@ -9,21 +10,16 @@ namespace LiveClinic.ClinicManager.Core.Domain.Facility
     {
         public string Name { get; private set; }
         public Address Address { get; private set; }
-        public Money ClinicFee { get; private set; }
+        public Fee ServiceFee { get; private set; }
         
         private readonly ClinicValidator _validator=new ClinicValidator();
-
-        public Clinic()
-        {
-            
-        }
 
         public Clinic(string name, string street, string city, decimal value, string currency="USD")
         {
             
             Name = name;
             Address = new Address(street, city);
-            ClinicFee = new Money(value, currency);
+            ServiceFee = new Fee(FeeType.Service, value, currency);
             
             _validator.ValidateAndThrow(this);
             
@@ -42,11 +38,11 @@ namespace LiveClinic.ClinicManager.Core.Domain.Facility
         
         public void ChangeFee(decimal value, string currency="USD")
         {
-            ClinicFee = new Money(value, currency);
+            ServiceFee = new Fee(FeeType.Service, value, currency);
             
             _validator.ValidateAndThrow(this);
-            
-            AddDomainEvent(new ClinicFeeChanged(Id));
+
+            AddDomainEvent(new FeeChanged(FeeType.Service, Id));
         }
 
         public override string ToString()
