@@ -1,4 +1,4 @@
-﻿namespace LiveClinic.ClientManager.Infrastructure
+﻿namespace LiveClinic.EncounterManager.Infrastructure
 {
     public class Class1
     {

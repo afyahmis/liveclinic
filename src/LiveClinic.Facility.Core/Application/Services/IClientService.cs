@@ -10,6 +10,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
     {
         Task<Result<Client>> LoadClient(string clientId);
         Task<Result<IEnumerable<Client>>> LoadClients();
+        Task<Result<IEnumerable<Client>>> SearchClients(string search);
         Task<Result> EnrollClient(Client client);
         Task<Result> RemoveClient(string clientId);
         Task<Result> ChangeClientDetails(string clientId,DateTime registrationDate, string firstName, string middleName,

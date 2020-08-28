@@ -48,7 +48,7 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests.Persistence
             Assert.NotNull(testEntity);
             Log.Debug(testEntity.ToString());
         }
-        
+
         [Test]
         public void should_Read()
         {
@@ -61,7 +61,7 @@ namespace LiveClinic.SharedKernel.Infrastructure.Tests.Persistence
         {
             var name = _testEntities.Last().Name;
             var testEntity = _testEntityRepository
-                .Read(x => x.Name == name)
+                .Read(x => x.Name.ToLower().Contains( "ame"))
                 .Result.First();
             Assert.NotNull(testEntity);
             Log.Debug(testEntity.ToString());

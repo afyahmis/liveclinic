@@ -53,6 +53,17 @@ namespace LiveClinic.ClinicManager.Core.Tests.Application.Services
         }
 
         [Test]
+        public void should_Search_Clients()
+        {
+            var result = _clientService.SearchClients("20").Result;
+            Assert.True(result.IsSuccess);
+            Assert.True(result.Value.Any());
+
+            foreach (var client in result.Value)
+                Log.Debug(client.ToString());
+        }
+
+        [Test]
         public void should_Enroll_Client()
         {
             var client = new Client(DateTime.Now, "H101-30",

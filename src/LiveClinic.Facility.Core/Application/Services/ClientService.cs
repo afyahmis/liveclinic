@@ -51,6 +51,32 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
+        public async Task<Result<IEnumerable<Client>>> SearchClients(string search)
+        {
+            Log.Debug("Searching...");
+
+            if (string.IsNullOrWhiteSpace(search))
+                return await LoadClients();
+
+            search = search.ToLower();
+            try
+            {
+                var patients = await _clientRepository
+                    .Read(x =>
+                        x.Identifier.Value.ToLower().Contains(search) ||
+                        x.Name.FirstName.ToLower().Contains(search)||
+                        x.Name.MiddleName.ToLower().Contains(search) ||
+                        x.Name.LastName.ToLower().Contains(search));
+
+                return Result.Success(patients);
+            }
+            catch (Exception e)
+            {
+                Log.Error("Load error", e);
+                return Result.Failure<IEnumerable<Client>>(e.Message);
+            }
+        }
+
         public async Task<Result> EnrollClient(Client client)
         {
             Log.Debug($"Creating [{client}] ...");
