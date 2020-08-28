@@ -37,7 +37,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result<IEnumerable<Doctor>>> LoadDoctors()
         {
             Log.Debug("Loading...");
-
             try
             {
                 var doctors = await _doctorRepository.Read();
@@ -54,7 +53,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result> HireDoctor(Doctor doctor)
         {
             Log.Debug($"Creating [{doctor}] ...");
-
             try
             {
                 await _doctorRepository.Create(doctor);
@@ -65,15 +63,14 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
             catch (Exception e)
             {
-                Log.Error("SetupClinic error", e);
+                Log.Error("Hire doctor error", e);
                 return Result.Failure(e.Message);
             }
         }
 
         public async Task<Result> RemoveDoctor(string doctorId)
         {
-            Log.Debug($"deleting doctor [{doctorId}] ...");
-
+            Log.Debug($"deleting Doctor [{doctorId}] ...");
             try
             {
                 var existingDoctor = await _doctorRepository.Read(doctorId);
@@ -98,8 +95,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
 
         public async Task<Result> ChangeDoctorDetails(string doctorId, string firstName, string middleName, string lastName, string street, string city)
         {
-            Log.Debug($"updating doctor [{doctorId}] ...");
-
+            Log.Debug($"updating Doctor [{doctorId}] ...");
             try
             {
                 var existingDoctor = await _doctorRepository.Read(doctorId);
@@ -125,7 +121,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result> AdjustConsultationFee(string doctorId, double value, string currency)
         {
             Log.Debug($"updating doctor [{doctorId}] ...");
-
             try
             {
                 var existingDoctor = await _doctorRepository.Read(doctorId);

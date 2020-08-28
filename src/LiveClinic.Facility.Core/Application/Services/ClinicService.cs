@@ -22,7 +22,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result<Clinic>> Load()
         {
             Log.Debug("Loading...");
-
             try
             {
                 var clinics = await _clinicRepository.Read();
@@ -39,7 +38,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result> SetupClinic(Clinic clinic)
         {
             Log.Debug($"Setting up [{clinic}] ...");
-
             try
             {
                 var clinics = await _clinicRepository.Read();
@@ -64,7 +62,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result> ChangeClinicDetails(string clinicId, string name, string street, string city)
         {
             Log.Debug($"updating clinic [{clinicId}] ...");
-
             try
             {
                 var existingClinic = await _clinicRepository.Read(clinicId);

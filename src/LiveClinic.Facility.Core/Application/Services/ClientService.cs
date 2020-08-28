@@ -64,7 +64,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
             catch (Exception e)
             {
-                Log.Error("SetupClinic error", e);
+                Log.Error("Enroll error", e);
                 return Result.Failure(e.Message);
             }
         }
@@ -77,7 +77,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 var existingDoctor = await _clientRepository.Read(clientId);
 
                 if (null == existingDoctor)
-                    throw new Exception($"Doctor does not Exist !");
+                    throw new Exception($"Client does not Exist !");
 
                 existingDoctor.MarkAsDeleted();
 
@@ -103,7 +103,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 var existingDoctor = await _clientRepository.Read(clientId);
 
                 if (null == existingDoctor)
-                    throw new Exception($"Doctor does not Exist !");
+                    throw new Exception($"Client does not Exist !");
 
                 existingDoctor.ChangeDetails(registrationDate, firstName, middleName, lastName, street, city, birthDate,
                     gender);
