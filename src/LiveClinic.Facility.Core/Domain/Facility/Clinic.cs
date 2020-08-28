@@ -10,22 +10,22 @@ namespace LiveClinic.ClinicManager.Core.Domain.Facility
     {
         public string Name { get; private set; }
         public Address Address { get; private set; }
-        public Fee ServiceFee { get; private set; }
-        
-        private readonly ClinicValidator _validator=new ClinicValidator();
+        public Money ServiceFee { get; private set; }
+
+        private readonly ClinicValidator _validator = new ClinicValidator();
 
         private Clinic()
         {
         }
 
-        public Clinic(string name, string street, string city, decimal value, string currency="USD")
+        public Clinic(string name, string street, string city, double value, string currency = "USD")
         {
             Name = name;
             Address = new Address(street, city);
-            ServiceFee = new Fee(FeeType.Service, value, currency);
-            
+            ServiceFee = new Money(value, currency);
+
             _validator.ValidateAndThrow(this);
-            
+
             AddDomainEvent(new ClinicCreated(Id));
         }
 
@@ -33,16 +33,16 @@ namespace LiveClinic.ClinicManager.Core.Domain.Facility
         {
             Name = name;
             Address = new Address(street, city);
-            
+
             _validator.ValidateAndThrow(this);
-            
+
             AddDomainEvent(new ClinicDetailsUpdated(Id));
         }
-        
-        public void ChangeFee(decimal value, string currency="USD")
+
+        public void ChangeFee(double value, string currency)
         {
-            ServiceFee = new Fee(FeeType.Service, value, currency);
-            
+            ServiceFee = new Money(value, currency);
+
             _validator.ValidateAndThrow(this);
 
             AddDomainEvent(new FeeChanged(FeeType.Service, Id));

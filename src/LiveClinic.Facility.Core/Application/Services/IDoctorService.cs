@@ -12,6 +12,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         Task<Result> HireDoctor(Doctor doctor);
         Task<Result> RemoveDoctor(string doctorId);
         Task<Result> ChangeDoctorDetails(string doctorId, string firstName, string middleName, string lastName, string street, string city);
-        Task<Result> AdjustConsultationFee(string doctorId, decimal value, string currency);
+        Task<Result> AdjustConsultationFee(string doctorId, double value, string currency);
     }
 }

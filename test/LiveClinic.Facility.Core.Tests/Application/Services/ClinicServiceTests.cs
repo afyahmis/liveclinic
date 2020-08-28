@@ -1,11 +1,10 @@
+using System.Linq;
 using LiveClinic.ClinicManager.Core.Application.Services;
-using LiveClinic.ClinicManager.Core.Domain.Common;
 using LiveClinic.ClinicManager.Core.Domain.Facility;
 using LiveClinic.ClinicManager.Core.Tests.TestArtifacts;
 using LiveClinic.SharedKernel.Common;
 using NUnit.Framework;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework.Internal;
 using Serilog;
 
 namespace LiveClinic.ClinicManager.Core.Tests.Application.Services
@@ -15,11 +14,11 @@ namespace LiveClinic.ClinicManager.Core.Tests.Application.Services
     {
         private IClinicService _clinicService;
         private Clinic _clinic;
-        
+
         [OneTimeSetUp]
         public void Init()
         {
-            _clinic = TestData.GetTestClinic();
+            _clinic = TestData.GetTestClinics().First();
             TestInitializer.ClearDb();
             TestInitializer.SeedData(new []{_clinic});
         }
@@ -39,19 +38,16 @@ namespace LiveClinic.ClinicManager.Core.Tests.Application.Services
             Log.Debug(result.Value.ToString());
         }
         [Test]
-        public void should_Setup()
+        public void should_Setup_Clinic()
         {
             TestInitializer.ClearDb();
-
             var result = _clinicService.SetupClinic(_clinic).Result;
             Assert.True(result.IsSuccess);
-            
         }
-        
+
         [Test]
-        public void should_Change_Details()
+        public void should_Change_Clinic_Details()
         {
-            
             var result = _clinicService.ChangeClinicDetails(_clinic.Id, "New","Strr","N").Result;
             Assert.True(result.IsSuccess);
 
@@ -60,16 +56,16 @@ namespace LiveClinic.ClinicManager.Core.Tests.Application.Services
             Assert.AreEqual("New",updateClinic.Value.Name);
             Assert.AreEqual(new Address("Strr","N"),updateClinic.Value.Address);
         }
-        
+
         [Test]
         public void should_Adjust_Service_Fee()
         {
-            var result = _clinicService.AdjustServiceFee(_clinic.Id,10000,"KES").Result;
+            var result = _clinicService.AdjustServiceFee(_clinic.Id,10000.55,"KES").Result;
             Assert.True(result.IsSuccess);
 
             var updateClinic = _clinicService.Load().Result;
             Assert.True(updateClinic.IsSuccess);
-            Assert.AreEqual(new Money(10000,"KES"),updateClinic.Value.ServiceFee.Amount );
+            Assert.AreEqual(new Money(10000.55,"KES"),updateClinic.Value.ServiceFee );
         }
     }
 }

@@ -5,24 +5,24 @@ namespace LiveClinic.SharedKernel.Common
 {
     public class Money : ValueObject<Money>
     {
-        public decimal Value { get;  }
+        public double Amount { get;  }
         public string Currency { get;  }
 
-        public Money(decimal value, string currency)
+        public Money(double amount, string currency)
         {
-            Value = value;
+            Amount = amount;
             Currency = currency.ToUpper();
         }
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return Value;
+            yield return Amount;
             yield return Currency;
         }
 
         public override string ToString()
         {
-            return $"{Currency} {Value:C}";
+            return $"{Currency} {Amount:N2}";
         }
-       
+
     }
 }

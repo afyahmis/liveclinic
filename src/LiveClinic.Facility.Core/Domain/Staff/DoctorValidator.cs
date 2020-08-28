@@ -10,8 +10,8 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
             RuleFor(x => x.Name.LastName).NotEmpty();
             RuleFor(x => x.Address.Street).NotEmpty();
             RuleFor(x => x.Address.City).NotEmpty();
-            RuleFor(x => x.ConsultationFee.Amount.Value).GreaterThan(0);
-            RuleFor(x => x.ConsultationFee.Amount.Currency).NotEmpty();
+            RuleFor(x => x.ConsultationFee.Amount).GreaterThan(0);
+            RuleFor(x => x.ConsultationFee.Currency).NotEmpty();
         }
     }
 }

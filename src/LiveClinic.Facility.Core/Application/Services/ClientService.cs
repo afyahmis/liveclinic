@@ -21,6 +21,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
 
         public async Task<Result<Client>> LoadPatient(string patientId)
         {
+            Log.Debug("Loading...");
             try
             {
                 var patient = await _clientRepository.Read(patientId);
@@ -37,7 +38,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result<IEnumerable<Client>>> LoadPatients()
         {
             Log.Debug("Loading...");
-
             try
             {
                 var patients = await _clientRepository.Read();
@@ -54,7 +54,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result> EnrollPatient(Client client)
         {
             Log.Debug($"Creating [{client}] ...");
-
             try
             {
                 await _clientRepository.Create(client);
@@ -72,8 +71,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
 
         public async Task<Result> RemovePatient(string patientId)
         {
-            Log.Debug($"deleting patient [{patientId}] ...");
-
+            Log.Debug($"Deleting patient [{patientId}] ...");
             try
             {
                 var existingDoctor = await _clientRepository.Read(patientId);
@@ -99,8 +97,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         public async Task<Result> ChangePatientDetails(string patientId,DateTime registrationDate, string firstName, string middleName,
             string lastName, string street, string city, DateTime birthDate, string gender)
         {
-            Log.Debug($"updating patient [{patientId}] ...");
-
+            Log.Debug($"Updating Client [{patientId}] ...");
             try
             {
                 var existingDoctor = await _clientRepository.Read(patientId);

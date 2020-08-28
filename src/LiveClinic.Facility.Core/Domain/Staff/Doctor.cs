@@ -11,21 +11,21 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
     {
         public PersonName Name { get; private set; }
         public Address Address { get; private set; }
-        public Fee ConsultationFee { get; private set; }
-        public bool Voided { get;private set; }
-        
-        private readonly DoctorValidator _validator=new DoctorValidator();
+        public Money ConsultationFee { get; private set; }
+        public bool Voided { get; private set; }
+
+        private readonly DoctorValidator _validator = new DoctorValidator();
 
         private Doctor()
         {
         }
 
-        public Doctor(string firstName, string middleName, string lastName, string street, string city, decimal value,
-            string currency)
+        public Doctor(string firstName, string middleName, string lastName, string street, string city, double value,
+            string currency = "USD")
         {
             Name = new PersonName(firstName, middleName, lastName);
             Address = new Address(street, city);
-            ConsultationFee = new Fee(FeeType.Consultation, value, currency);
+            ConsultationFee = new Money(value, currency);
 
             _validator.ValidateAndThrow(this);
 
@@ -42,9 +42,9 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
             AddDomainEvent(new DoctorDetailsUpdated(Id));
         }
 
-        public void ChangeConsultationFee(decimal value, string currency)
+        public void ChangeConsultationFee(double value, string currency)
         {
-            ConsultationFee = new Fee(FeeType.Consultation, value, currency);
+            ConsultationFee = new Money(value, currency);
 
             _validator.ValidateAndThrow(this);
 
@@ -55,9 +55,9 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
         {
             if (Voided)
                 throw new Exception($"Doctor already deleted !");
-            
+
             Voided = true;
-            
+
             AddDomainEvent(new DoctorDeleted(Id));
         }
 

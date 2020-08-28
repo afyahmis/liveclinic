@@ -122,7 +122,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result> AdjustConsultationFee(string doctorId, decimal value, string currency)
+        public async Task<Result> AdjustConsultationFee(string doctorId, double value, string currency)
         {
             Log.Debug($"updating doctor [{doctorId}] ...");
 

@@ -8,13 +8,12 @@ using Serilog;
 
 namespace LiveClinic.ClinicManager.Core.Application.Services
 {
-    public class ClinicService:IClinicService
+    public class ClinicService : IClinicService
     {
         private readonly IEventPublisher _eventPublisher;
         private readonly IClinicRepository _clinicRepository;
 
-        public ClinicService(IEventPublisher eventPublisher,IClinicRepository clinicRepository
-        )
+        public ClinicService(IEventPublisher eventPublisher, IClinicRepository clinicRepository)
         {
             _eventPublisher = eventPublisher;
             _clinicRepository = clinicRepository;
@@ -26,7 +25,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
 
             try
             {
-                var clinics =await _clinicRepository.Read();
+                var clinics = await _clinicRepository.Read();
 
                 return Result.Success(clinics.FirstOrDefault());
             }
@@ -43,11 +42,11 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
 
             try
             {
-                var clinics =  await _clinicRepository.Read();
+                var clinics = await _clinicRepository.Read();
 
                 if (clinics.Any())
                     throw new Exception($"Clinic is already setup !");
-                
+
                 await _clinicRepository.Create(clinic);
 
                 await _eventPublisher.Publish(clinic);
@@ -59,13 +58,13 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 Log.Error("SetupClinic error", e);
                 return Result.Failure(e.Message);
             }
-            
+
         }
 
         public async Task<Result> ChangeClinicDetails(string clinicId, string name, string street, string city)
         {
             Log.Debug($"updating clinic [{clinicId}] ...");
-            
+
             try
             {
                 var existingClinic = await _clinicRepository.Read(clinicId);
@@ -88,7 +87,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result> AdjustServiceFee(string clinicId, decimal value, string currency)
+        public async Task<Result> AdjustServiceFee(string clinicId, double value, string currency = "USD")
         {
             Log.Debug($"updating clinic [{clinicId}] Fee ...");
             try

@@ -9,6 +9,6 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
         Task<Result<Clinic>> Load();
         Task<Result> SetupClinic(Clinic clinic);
         Task<Result> ChangeClinicDetails(string clinicId, string name, string street, string city);
-        Task<Result> AdjustServiceFee(string clinicId, decimal value, string currency="USD");
+        Task<Result> AdjustServiceFee(string clinicId, double value, string currency = "USD");
     }
 }

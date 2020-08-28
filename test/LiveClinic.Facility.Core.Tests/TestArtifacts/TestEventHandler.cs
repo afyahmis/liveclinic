@@ -13,8 +13,9 @@ namespace LiveClinic.ClinicManager.Core.Tests.TestArtifacts
         INotificationHandler<ClinicDetailsUpdated>,
         INotificationHandler<DoctorCreated>,
         INotificationHandler<DoctorDetailsUpdated>,
-        INotificationHandler<DoctorDeleted>
-        
+        INotificationHandler<DoctorDeleted>,
+        INotificationHandler<FeeChanged>
+
     {
         public Task Handle(ClientCreated notification, CancellationToken cancellationToken)
         {
@@ -61,6 +62,12 @@ namespace LiveClinic.ClinicManager.Core.Tests.TestArtifacts
         public Task Handle(DoctorDeleted notification, CancellationToken cancellationToken)
         {
             Log.Debug($"{nameof(DoctorDeleted)} {notification.DoctorId}");
+            return Task.CompletedTask;
+        }
+
+        public Task Handle(FeeChanged notification, CancellationToken cancellationToken)
+        {
+            Log.Debug($"{nameof(FeeChanged)} {notification.RefId}");
             return Task.CompletedTask;
         }
     }

@@ -58,13 +58,13 @@ namespace LiveClinic.ClinicManager.Core.Domain.Clients
         public void Delete()
         {
             if (Voided)
-                throw new Exception($"Patient already deleted !");
+                throw new Exception($"Client already deleted !");
 
             Voided = true;
 
             AddDomainEvent(new ClientDeleted(Id));
         }
-        
+
         public override string ToString()
         {
             return $"{Name}";
