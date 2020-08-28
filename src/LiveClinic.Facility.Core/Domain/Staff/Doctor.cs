@@ -34,6 +34,9 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
 
         public void ChangeDetails(string firstName, string middleName, string lastName, string street, string city)
         {
+            if (Voided)
+                throw new Exception($"Doctor is voided and no changes allowed !");
+
             Name = new PersonName(firstName, middleName, lastName);
             Address = new Address(street, city);
 
@@ -44,6 +47,9 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
 
         public void ChangeConsultationFee(double value, string currency)
         {
+            if (Voided)
+                throw new Exception($"Doctor is voided and no changes allowed !");
+
             ConsultationFee = new Money(value, currency);
 
             _validator.ValidateAndThrow(this);
@@ -51,10 +57,10 @@ namespace LiveClinic.ClinicManager.Core.Domain.Staff
             AddDomainEvent(new FeeChanged(FeeType.Service, Id));
         }
 
-        public void Delete()
+        public void MarkAsDeleted()
         {
             if (Voided)
-                throw new Exception($"Doctor already deleted !");
+                throw new Exception($"Doctor already voided !");
 
             Voided = true;
 

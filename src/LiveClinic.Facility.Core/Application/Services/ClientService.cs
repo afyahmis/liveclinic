@@ -19,12 +19,12 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             _clientRepository = clientRepository;
         }
 
-        public async Task<Result<Client>> LoadPatient(string patientId)
+        public async Task<Result<Client>> LoadClient(string clientId)
         {
             Log.Debug("Loading...");
             try
             {
-                var patient = await _clientRepository.Read(patientId);
+                var patient = await _clientRepository.Read(clientId);
 
                 return Result.Success(patient);
             }
@@ -35,7 +35,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result<IEnumerable<Client>>> LoadPatients()
+        public async Task<Result<IEnumerable<Client>>> LoadClients()
         {
             Log.Debug("Loading...");
             try
@@ -51,7 +51,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result> EnrollPatient(Client client)
+        public async Task<Result> EnrollClient(Client client)
         {
             Log.Debug($"Creating [{client}] ...");
             try
@@ -69,17 +69,17 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result> RemovePatient(string patientId)
+        public async Task<Result> RemoveClient(string clientId)
         {
-            Log.Debug($"Deleting patient [{patientId}] ...");
+            Log.Debug($"Deleting patient [{clientId}] ...");
             try
             {
-                var existingDoctor = await _clientRepository.Read(patientId);
+                var existingDoctor = await _clientRepository.Read(clientId);
 
                 if (null == existingDoctor)
                     throw new Exception($"Doctor does not Exist !");
 
-                existingDoctor.Delete();
+                existingDoctor.MarkAsDeleted();
 
                 await _clientRepository.Update(existingDoctor);
 
@@ -94,13 +94,13 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
             }
         }
 
-        public async Task<Result> ChangePatientDetails(string patientId,DateTime registrationDate, string firstName, string middleName,
+        public async Task<Result> ChangeClientDetails(string clientId,DateTime registrationDate, string firstName, string middleName,
             string lastName, string street, string city, DateTime birthDate, string gender)
         {
-            Log.Debug($"Updating Client [{patientId}] ...");
+            Log.Debug($"Updating Client [{clientId}] ...");
             try
             {
-                var existingDoctor = await _clientRepository.Read(patientId);
+                var existingDoctor = await _clientRepository.Read(clientId);
 
                 if (null == existingDoctor)
                     throw new Exception($"Doctor does not Exist !");

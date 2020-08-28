@@ -31,7 +31,7 @@ namespace LiveClinic.ClinicManager.Core.Domain.Clients
             Identifier = new Identifier(IdentifierType.InsuranceNo, identifier);
             Name = new PersonName(firstName, middleName, lastName);
             Address = new Address(street, city);
-            BirthDate = birthDate;
+            BirthDate = birthDate.Date;
             Gender = gender.ToUpper();
 
             _validator.ValidateAndThrow(this);
@@ -44,10 +44,13 @@ namespace LiveClinic.ClinicManager.Core.Domain.Clients
             string street, string city,
             DateTime birthDate, string gender)
         {
+            if (Voided)
+                throw new Exception($"Client already voided and no changes allowed !");
+
             RegistrationDate = registrationDate;
             Name = new PersonName(firstName, middleName, lastName);
             Address = new Address(street, city);
-            BirthDate = birthDate;
+            BirthDate = birthDate.Date;
             Gender = gender.ToUpper();
 
             _validator.ValidateAndThrow(this);
@@ -55,10 +58,10 @@ namespace LiveClinic.ClinicManager.Core.Domain.Clients
             AddDomainEvent(new ClientDetailsUpdated(Id));
         }
 
-        public void Delete()
+        public void MarkAsDeleted()
         {
             if (Voided)
-                throw new Exception($"Client already deleted !");
+                throw new Exception($"Client already voided !");
 
             Voided = true;
 

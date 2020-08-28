@@ -81,7 +81,7 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 if (null == existingDoctor)
                     throw new Exception($"Doctor does not Exist !");
 
-                existingDoctor.Delete();
+                existingDoctor.MarkAsDeleted();
 
                 await _doctorRepository.Update(existingDoctor);
 

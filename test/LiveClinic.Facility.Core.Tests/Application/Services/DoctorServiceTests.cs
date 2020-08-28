@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using LiveClinic.ClinicManager.Core.Application.Services;
-using LiveClinic.ClinicManager.Core.Domain.Facility;
 using LiveClinic.ClinicManager.Core.Domain.Staff;
 using LiveClinic.ClinicManager.Core.Tests.TestArtifacts;
 using LiveClinic.SharedKernel.Common;
