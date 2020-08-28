@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using LiveClinic.SharedKernel.Interfaces.Messaging;
 using LiveClinic.SharedKernel.Model;

@@ -14,9 +14,12 @@ namespace LiveClinic.ClinicManager.Core.Domain.Facility
         
         private readonly ClinicValidator _validator=new ClinicValidator();
 
+        private Clinic()
+        {
+        }
+
         public Clinic(string name, string street, string city, decimal value, string currency="USD")
         {
-            
             Name = name;
             Address = new Address(street, city);
             ServiceFee = new Fee(FeeType.Service, value, currency);

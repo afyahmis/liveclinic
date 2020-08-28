@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using MediatR;
 
 namespace LiveClinic.SharedKernel.Model
 {
@@ -12,7 +10,7 @@ namespace LiveClinic.SharedKernel.Model
         [NotMapped] 
         public IReadOnlyCollection<DomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
 
-        protected AggregateRoot()
+        public AggregateRoot()
         {
             Id = Guid.NewGuid().ToString().ToLower();
         }

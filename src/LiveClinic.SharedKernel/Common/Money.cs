@@ -11,7 +11,7 @@ namespace LiveClinic.SharedKernel.Common
         public Money(decimal value, string currency)
         {
             Value = value;
-            Currency = currency;
+            Currency = currency.ToUpper();
         }
         protected override IEnumerable<object> GetEqualityComponents()
         {

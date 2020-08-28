@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using LiveClinic.SharedKernel.Interfaces.Persistence;
 using LiveClinic.SharedKernel.Model;
-using Microsoft.VisualBasic.CompilerServices;
 using MongoDB.Driver;
 
 namespace LiveClinic.SharedKernel.Infrastructure.Persistence
@@ -67,7 +66,8 @@ namespace LiveClinic.SharedKernel.Infrastructure.Persistence
 
         private string GetCollectionName()
         {
-            var obj =Activator.CreateInstance(typeof(T)) as AggregateRoot;
+            var obj = System.Runtime.Serialization.FormatterServices
+                .GetUninitializedObject(typeof(T)) as AggregateRoot;
             return obj?.PreferredDocName;
         }
     }

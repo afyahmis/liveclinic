@@ -5,10 +5,10 @@ namespace LiveClinic.SharedKernel.Common
 {
     public class Identifier:ValueObject<Identifier>
     {
-        public string Type { get;  }
+        public IdentifierType Type { get;  }
         public string Value { get;  }
 
-        public Identifier(string type, string value)
+        public Identifier(IdentifierType type, string value)
         {
             Type = type;
             Value = value;
@@ -16,7 +16,13 @@ namespace LiveClinic.SharedKernel.Common
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            throw new System.NotImplementedException();
+            yield return Type;
+            yield return Value;
+        }
+
+        public override string ToString()
+        {
+            return $"{Type}:{Value}";
         }
     }
 }

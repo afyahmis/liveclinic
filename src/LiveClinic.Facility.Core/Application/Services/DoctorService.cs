@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
 using LiveClinic.ClinicManager.Core.Domain.Staff;
@@ -82,7 +81,9 @@ namespace LiveClinic.ClinicManager.Core.Application.Services
                 if (null == existingDoctor)
                     throw new Exception($"Doctor does not Exist !");
 
-                await _doctorRepository.Delete(existingDoctor);
+                existingDoctor.Delete();
+
+                await _doctorRepository.Update(existingDoctor);
 
                 await _eventPublisher.Publish(existingDoctor);
 

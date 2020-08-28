@@ -30,9 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClinicManager.In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClinicManager.Infrastructure.Tests", "test\LiveClinic.Facility.Infrastructure.Tests\LiveClinic.ClinicManager.Infrastructure.Tests.csproj", "{EC73F907-37B8-4929-97ED-A3660603EB59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientService", "ClientService", "{6B7BCEA8-01DA-4625-AEF4-4B34A82FEE45}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EncounterService", "EncounterService", "{6B7BCEA8-01DA-4625-AEF4-4B34A82FEE45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Core", "src\LiveClinic.ClientManager.Core\LiveClinic.ClientManager.Core.csproj", "{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.EncounterManager.Core", "src\LiveClinic.ClientManager.Core\LiveClinic.EncounterManager.Core.csproj", "{AE06DDC5-C79A-4EAA-A720-808590EEC4AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillingService", "BillingService", "{002A649C-AB1D-4369-A517-55218DFFFEAB}"
 EndProject
@@ -48,7 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Infrastr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientService", "ClientService", "{B0AC6E7D-27C7-4B6E-8F8B-909EFCD315D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Infrastructure", "src\LiveClinic.ClientManager.Infrastructure\LiveClinic.ClientManager.Infrastructure.csproj", "{29B4C570-D953-4D12-AE2B-5EBBEB6CC5CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.EncounterManager.Infrastructure", "src\LiveClinic.ClientManager.Infrastructure\LiveClinic.EncounterManager.Infrastructure.csproj", "{29B4C570-D953-4D12-AE2B-5EBBEB6CC5CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Core.Tests", "test\LiveClinic.ClientManager.Core.Tests\LiveClinic.ClientManager.Core.Tests.csproj", "{96E8C6E1-4865-4D0A-A14C-A3D5780C5B06}"
 EndProject

@@ -13,7 +13,7 @@ namespace LiveClinic.SharedKernel.Common
             Street = street;
             City = city;
         }
-        
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Street;

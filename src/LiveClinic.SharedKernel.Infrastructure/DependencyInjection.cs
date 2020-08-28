@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using LiveClinic.SharedKernel.Infrastructure.Messaging;
 using LiveClinic.SharedKernel.Infrastructure.Persistence;

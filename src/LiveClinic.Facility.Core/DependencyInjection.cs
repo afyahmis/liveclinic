@@ -8,6 +8,8 @@ namespace LiveClinic.ClinicManager.Core
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IClinicService, ClinicService>();
+            services.AddScoped<IDoctorService, DoctorService>();
+            services.AddScoped<IClientService, ClientService>();
             return services;
         }
     }
