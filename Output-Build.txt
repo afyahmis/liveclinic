@@ -1,3 +1,0 @@
-﻿1>------ Build started: Project: LiveClinic.SharedKernel.Infrastructure.Tests, Configuration: Debug Any CPU ------
-1>LiveClinic.SharedKernel.Infrastructure.Tests -> F:\workspace\liveclinic\test\LiveClinic.SharedKernel.Infrastructure.Tests\bin\Debug\netcoreapp3.1\LiveClinic.SharedKernel.Infrastructure.Tests.dll
-========== Build: 1 succeeded, 0 failed, 2 up-to-date, 0 skipped ==========
