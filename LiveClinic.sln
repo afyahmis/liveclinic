@@ -50,9 +50,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EncounterService", "Encount
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.EncounterManager.Infrastructure", "src\LiveClinic.ClientManager.Infrastructure\LiveClinic.EncounterManager.Infrastructure.csproj", "{29B4C570-D953-4D12-AE2B-5EBBEB6CC5CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Core.Tests", "test\LiveClinic.ClientManager.Core.Tests\LiveClinic.ClientManager.Core.Tests.csproj", "{96E8C6E1-4865-4D0A-A14C-A3D5780C5B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.EncounterManager.Core.Tests", "test\LiveClinic.ClientManager.Core.Tests\LiveClinic.EncounterManager.Core.Tests.csproj", "{96E8C6E1-4865-4D0A-A14C-A3D5780C5B06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Infrastructure.Tests", "test\LiveClinic.ClientManager.Infrastructure.Tests\LiveClinic.ClientManager.Infrastructure.Tests.csproj", "{E3BE8CCA-9E40-45B6-87A0-5088C26175C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.EncounterManager.Infrastructure.Tests", "test\LiveClinic.ClientManager.Infrastructure.Tests\LiveClinic.EncounterManager.Infrastructure.Tests.csproj", "{E3BE8CCA-9E40-45B6-87A0-5088C26175C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClinicManager", "src\LiveClinic.ClinicManager\LiveClinic.ClinicManager.csproj", "{93F53CA9-1F8F-40B2-B07B-DF1630DEA381}"
 EndProject
