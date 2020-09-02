@@ -5,11 +5,27 @@ namespace LiveClinic.EncounterManager.Core.Domain.Consultation
 {
     public class Encounter : AggregateRoot
     {
-        public DateTime Date { get; set; } = DateTime.Now;
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public string ClientId { get; set; }
-        public string ClinicId { get; set; }
-        // public List<Consultation> Consultations { get; set; }=new List<Consultation>();
+        public string ProviderId { get;private set; }
+        public string VisitId { get;private set; }
+        public string PatientId { get; private set; }
+        public string Observation { get; private set; }
+
+        public DateTime Date { get;private set; } = DateTime.Now;
+
+        private Encounter()
+        {
+        }
+
+        public Encounter(string providerId, string visitId, string patientId)
+        {
+            ProviderId = providerId;
+            VisitId = visitId;
+            PatientId = patientId;
+        }
+
+        public void CreateObservation(string observation)
+        {
+            Observation = observation;
+        }
     }
 }

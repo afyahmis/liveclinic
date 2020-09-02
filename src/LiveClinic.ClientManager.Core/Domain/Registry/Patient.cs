@@ -6,10 +6,10 @@ namespace LiveClinic.EncounterManager.Core.Domain.Registry
 {
     public class Patient : AggregateRoot
     {
-        public Identifier Identifier { get; private set; }
-        public PersonName Name { get; private set; }
-        public string Gender { get; private set; }
-        public DateTime BirthDate { get; private set; }
-        public bool Voided { get; private set; }
+        public Identifier Identifier { get; set; }
+        public PersonName Name { get;  set; }
+        public string Gender { get; set; }
+        public DateTime BirthDate { get;  set; }
+        public bool Voided { get;  set; }
     }
 }
