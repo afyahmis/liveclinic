@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\LiveClinic.Facility.Core\LiveClinic.ClinicManager.Core.csproj" />
-    <ProjectReference Include="..\src\LiveClinic.Facility.Infrastructure\LiveClinic.ClinicManager.Infrastructure.csproj" />
+    <Folder Include="logs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="logs" />
+    <ProjectReference Include="..\LiveClinic.Facility.Core\LiveClinic.ClinicManager.Core.csproj" />
+    <ProjectReference Include="..\LiveClinic.Facility.Infrastructure\LiveClinic.ClinicManager.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
