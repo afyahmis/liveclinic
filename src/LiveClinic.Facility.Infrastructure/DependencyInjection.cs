@@ -13,9 +13,10 @@ namespace LiveClinic.ClinicManager.Infrastructure
     public static class DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-            IConfiguration configuration, List<Assembly> assemblies)
+            IConfiguration configuration, List<Assembly> assemblies = null)
         {
-            services.AddEventPublisher(assemblies);
+            if (null != assemblies)
+                services.AddEventPublisher(assemblies);
             services.AddMongoDb(configuration);
             services.AddScoped<IClinicRepository, ClinicRepository>();
             services.AddScoped<IDoctorRepository, DoctorRepository>();

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using LiveClinic.SharedKernel.Model;
 
 namespace LiveClinic.EncounterManager.Core.Domain.Consultation
