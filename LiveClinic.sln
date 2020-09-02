@@ -46,7 +46,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Infrastr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.Billing.Infrastructure.Tests", "test\LiveClinic.Billing.Infrastructure.Tests\LiveClinic.Billing.Infrastructure.Tests.csproj", "{F0E81BFA-FCAE-4D0B-B2D6-6834337CBC21}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientService", "ClientService", "{B0AC6E7D-27C7-4B6E-8F8B-909EFCD315D1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EncounterService", "EncounterService", "{B0AC6E7D-27C7-4B6E-8F8B-909EFCD315D1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.EncounterManager.Infrastructure", "src\LiveClinic.ClientManager.Infrastructure\LiveClinic.EncounterManager.Infrastructure.csproj", "{29B4C570-D953-4D12-AE2B-5EBBEB6CC5CE}"
 EndProject
@@ -54,7 +54,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClientManager.Infrastructure.Tests", "test\LiveClinic.ClientManager.Infrastructure.Tests\LiveClinic.ClientManager.Infrastructure.Tests.csproj", "{E3BE8CCA-9E40-45B6-87A0-5088C26175C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveClinic.ClinicManager", "LiveClinic.ClinicManager\LiveClinic.ClinicManager.csproj", "{93F53CA9-1F8F-40B2-B07B-DF1630DEA381}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveClinic.ClinicManager", "src\LiveClinic.ClinicManager\LiveClinic.ClinicManager.csproj", "{93F53CA9-1F8F-40B2-B07B-DF1630DEA381}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
