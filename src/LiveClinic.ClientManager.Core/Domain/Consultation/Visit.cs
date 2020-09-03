@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using LiveClinic.EncounterManager.Core.Domain.Common;
 using LiveClinic.SharedKernel.Model;
 
@@ -11,21 +12,24 @@ namespace LiveClinic.EncounterManager.Core.Domain.Consultation
         public DateTime Date { get; private set; } = DateTime.Now;
         public Period Session { get; private set; }
 
+
         private Visit()
         {
         }
+
         public Visit(string patientId, string clinicId)
         {
             PatientId = patientId;
             ClinicId = clinicId;
         }
-        public void StartVisit(DateTime startDate)
+
+        public void StartVisit()
         {
-            Session = new Period(startDate);
+            Session = new Period(DateTime.Now);
         }
-        public void EndVisit(DateTime endDate)
+        public void EndVisit()
         {
-            Session = new Period(Session.StartDate, endDate);
+            Session = new Period(Session.StartDate, DateTime.Now);
         }
     }
 }
